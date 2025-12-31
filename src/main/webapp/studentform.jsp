@@ -5,36 +5,54 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Student Add Form</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 	<%
 		Student student =(Student)request.getAttribute("studentid");
+		boolean isEdit = (student != null);
 	%>
 	
-	<h2><%= (student == null) ? "Add Student" : "Update Student" %></h2>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+        
+	<h3 class="text-center"><%= isEdit ? "Update a Student" : "Add a Student"%></h3>
 	
-	<form action ="<%= (student == null) ? "addstudent" : "updatestudent" %>" method="post">
+	<form action ="<%= isEdit ? "updatestudent" : "addstudent" %>" method="post">
 	
-		<% if (student != null) { %>
+		<% if (isEdit) { %>
 			<input type="hidden" name="studentid" value="<%=student.getId()%> ">
-			
 		<%}%>
 		
-		<label>Student Name :</label>
-		<input type="text" name="studentname" value="<%=(student != null) ? student.getName() : "" %>"><br>
-		<br>
-		<label>Student RollNo :</label>
-		<input type="text" name="studentrollno" value="<%=(student != null) ? student.getRollNo() : "" %>"><br>
-		<br>
-		<label>Student PhoneNo :</label>
-		<input type="text" name="studentphoneno" value="<%=(student != null) ? student.getPhoneNO() : "" %>"><br>
-		<br>
-		<label>Student Email :</label>
-		<input type="text" name="studentemail" value="<%=(student != null) ? student.getEmail() : "" %>"><br>
-		<br>
-		<input type="submit" value="Save">
+	  <div class="mb-1 mt-3">
+		<label class="form-label">Name:</label>
+		<input type="text" class="form-control" name="studentname" placeholder="Enter Name" value="<%=isEdit ? student.getName() : "" %>"><br>
+	  </div>
+	  
+	  <div class="mb-1">	
+		<label class="form-label"> RollNo:</label>
+		<input type="text" class="form-control" placeholder="Enter RollNo" name="studentrollno" value="<%=isEdit ? student.getRollNo() : "" %>"><br>
+	  </div>
+	  
+	  <div class="mb-1">	
+		<label class="form-label"> PhoneNo:</label>
+		<input type="text" class="form-control" placeholder="Enter PhoneNo"name="studentphoneno" value="<%=isEdit ? student.getPhoneNO() : "" %>"><br>
+	  </div>
+	  	
+	  <div class="mb-1">
+		<label class="form-label"> Email:</label>
+		<input type="email" class="form-control" placeholder="Enter Email" name="studentemail" value="<%=isEdit ? student.getEmail() : "" %>"><br>
+	  </div>
+	  
+	  <div class="text-center">	
+	   <input type="submit" class="btn btn-primary" value="Save">
+	  </div>
 	</form>
-	
+     </div>
+   </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
 </body>
 </html>

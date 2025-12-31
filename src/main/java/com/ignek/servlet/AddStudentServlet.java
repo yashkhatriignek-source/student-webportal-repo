@@ -23,10 +23,7 @@ public class AddStudentServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-	
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
-
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PrintWriter out = response.getWriter();

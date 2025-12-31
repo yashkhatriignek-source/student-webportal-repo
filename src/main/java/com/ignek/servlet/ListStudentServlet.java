@@ -52,9 +52,5 @@ public class ListStudentServlet extends HttpServlet {
 			}
 		requestDispatcher = request.getRequestDispatcher("studentlist.jsp");
 		requestDispatcher.forward(request, response);
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 	}	
 }

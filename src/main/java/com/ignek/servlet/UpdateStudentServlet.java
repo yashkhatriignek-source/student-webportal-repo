@@ -46,7 +46,7 @@ public class UpdateStudentServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String strId = 	request.getParameter("studentid");
+		String id = request.getParameter("studentid");
 		String studentName = request.getParameter("studentname");
 		int studentRollNo = Integer.parseInt(request.getParameter("studentrollno"));
 		String studentPhoneNo = request.getParameter("studentphoneno");
@@ -54,9 +54,9 @@ public class UpdateStudentServlet extends HttpServlet {
 		
 		Student students = new Student();
 		
-		if (strId !=  null) {
+		if (id !=  null) {
 			
-			int studentId = Integer.parseInt(strId.trim());
+			int studentId = Integer.parseInt(id.trim());
 		
 			students.setId(studentId);
 			students.setName(studentName);
